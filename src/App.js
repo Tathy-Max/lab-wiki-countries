@@ -10,21 +10,20 @@ import { CountryDetails } from './components/CountryDetails';
 function App() {
   console.log(countries);
 
-  const [countriesInfo, setCountriesInfo] = useState(' ');
+  const [countriesInfo, setCountriesInfo] = useState(countries);
 
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route
-          path={'/'}
-          element={<CountrieList countriesInfo={countriesInfo} />}
-        />
-        <Route
-          path={'/:id'}
-          element={<CountryDetails countriesInfo={countriesInfo} />}
-        />
-      </Routes>
+      <div style={{ display: 'flex' }}>
+        <CountrieList countriesInfo={countriesInfo} />
+        <Routes>
+          <Route
+            path={'/:id'}
+            element={<CountryDetails countriesInfo={countriesInfo} />}
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
